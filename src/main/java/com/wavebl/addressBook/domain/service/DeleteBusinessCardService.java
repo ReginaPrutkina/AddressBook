@@ -1,10 +1,7 @@
 package com.wavebl.addressBook.domain.service;
 
-import com.wavebl.addressBook.constants.CardState;
-import com.wavebl.addressBook.domain.model.BusinessCard;
 import com.wavebl.addressBook.domain.port.DeleteBusinessCardPort;
 import com.wavebl.addressBook.domain.port.FindBusinessCardByIdPort;
-import com.wavebl.addressBook.domain.port.SaveBusinessCardPort;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 

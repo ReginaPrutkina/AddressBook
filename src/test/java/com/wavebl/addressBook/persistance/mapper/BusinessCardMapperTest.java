@@ -15,7 +15,7 @@ class BusinessCardMapperTest {
     private static final String ADDRESS = "address";
     private static final String STATUS = "KNOWN";
 
-    private BusinessCardMapper mapper = Mappers.getMapper(BusinessCardMapper.class);
+    private final BusinessCardMapper mapper = Mappers.getMapper(BusinessCardMapper.class);
 
     @Test
     void fromBusinessCardEntityTest(){

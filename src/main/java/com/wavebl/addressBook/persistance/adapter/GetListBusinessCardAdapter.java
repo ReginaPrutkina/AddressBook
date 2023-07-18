@@ -3,7 +3,6 @@ package com.wavebl.addressBook.persistance.adapter;
 import com.wavebl.addressBook.constants.CardState;
 import com.wavebl.addressBook.domain.model.BusinessCard;
 import com.wavebl.addressBook.domain.port.GetListBusinessCardPort;
-import com.wavebl.addressBook.domain.port.SaveBusinessCardPort;
 import com.wavebl.addressBook.persistance.entities.BusinessCardEntity;
 import com.wavebl.addressBook.persistance.mapper.BusinessCardMapper;
 import com.wavebl.addressBook.persistance.repository.AddressBookRepository;
@@ -26,9 +25,7 @@ public class GetListBusinessCardAdapter implements GetListBusinessCardPort {
 
         Iterable<BusinessCardEntity> businessCardEntities = addressBookRepository.findAll();
 
-        return businessCardEntities == null
-                ? Collections.emptyList()
-                : StreamSupport.stream(businessCardEntities.spliterator(), false)
+        return StreamSupport.stream(businessCardEntities.spliterator(), false)
                 .map(mapper::map)
                 .collect(Collectors.toList());
     }

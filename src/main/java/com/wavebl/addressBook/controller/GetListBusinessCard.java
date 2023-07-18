@@ -2,10 +2,11 @@ package com.wavebl.addressBook.controller;
 
 import com.wavebl.addressBook.constants.CardState;
 import com.wavebl.addressBook.domain.model.BusinessCard;
-import com.wavebl.addressBook.domain.useCases.CreateBusinessCardUseCase;
 import com.wavebl.addressBook.domain.useCases.GetListBusinessCardUseCase;
 import lombok.RequiredArgsConstructor;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
 
 import java.util.Arrays;
 import java.util.List;

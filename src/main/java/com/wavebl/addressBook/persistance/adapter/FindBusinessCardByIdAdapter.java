@@ -2,7 +2,6 @@ package com.wavebl.addressBook.persistance.adapter;
 
 import com.wavebl.addressBook.domain.model.BusinessCard;
 import com.wavebl.addressBook.domain.port.FindBusinessCardByIdPort;
-import com.wavebl.addressBook.domain.port.SaveBusinessCardPort;
 import com.wavebl.addressBook.persistance.entities.BusinessCardEntity;
 import com.wavebl.addressBook.persistance.mapper.BusinessCardMapper;
 import com.wavebl.addressBook.persistance.repository.AddressBookRepository;
