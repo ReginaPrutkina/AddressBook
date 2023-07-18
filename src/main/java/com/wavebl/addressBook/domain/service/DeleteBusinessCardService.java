@@ -12,7 +12,7 @@ public class DeleteBusinessCardService {
     private final FindBusinessCardByIdPort findBusinessCardByIdPort;
 
     public void delete(long cardId) throws RuntimeException {
-        if (!findBusinessCardByIdPort.find(cardId).isPresent()) {
+        if (findBusinessCardByIdPort.find(cardId).isEmpty()) {
                  throw new RuntimeException(String.format("BusinessCard with id %d not found ", cardId));
         }
         deleteBusinessCardPort.delete(cardId);

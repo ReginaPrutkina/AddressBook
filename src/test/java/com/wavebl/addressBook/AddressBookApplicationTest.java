@@ -98,7 +98,7 @@ class AddressBookApplicationTest {
             // getAll - 3 BusinessCards with new states
             businessCardList = getListBusinessCardService.getList();
             assertEquals(3, businessCardList.size());
-            System.out.println("All businessCards:");
+            System.out.println("All businessCards with new states:");
             System.out.println(businessCardList);
         }
     }
