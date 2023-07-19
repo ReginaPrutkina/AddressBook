@@ -1,6 +1,6 @@
 package com.wavebl.addressBook.persistance.adapter;
 
-import com.wavebl.addressBook.domain.exception.BusinessException;
+import com.wavebl.addressBook.exception.BusinessException;
 import com.wavebl.addressBook.domain.model.BusinessCard;
 import com.wavebl.addressBook.domain.port.SaveBusinessCardPort;
 import com.wavebl.addressBook.persistance.mapper.BusinessCardMapper;

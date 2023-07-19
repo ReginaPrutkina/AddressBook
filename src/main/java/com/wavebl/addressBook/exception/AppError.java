@@ -1,4 +1,4 @@
-package com.wavebl.addressBook.domain.exception;
+package com.wavebl.addressBook.exception;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

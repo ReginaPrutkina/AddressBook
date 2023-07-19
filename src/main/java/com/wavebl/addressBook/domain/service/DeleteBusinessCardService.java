@@ -1,6 +1,6 @@
 package com.wavebl.addressBook.domain.service;
 
-import com.wavebl.addressBook.domain.exception.BusinessException;
+import com.wavebl.addressBook.exception.BusinessException;
 import com.wavebl.addressBook.domain.port.DeleteBusinessCardPort;
 import com.wavebl.addressBook.domain.port.FindBusinessCardByIdPort;
 import lombok.RequiredArgsConstructor;

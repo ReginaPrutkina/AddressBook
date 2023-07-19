@@ -1,6 +1,6 @@
 package com.wavebl.addressBook.controller;
 
-import com.wavebl.addressBook.domain.exception.ValidationException;
+import com.wavebl.addressBook.exception.ValidationException;
 import lombok.Data;
 
 @Data

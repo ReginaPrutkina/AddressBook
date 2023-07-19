@@ -2,7 +2,7 @@ package com.wavebl.addressBook;
 
 import com.wavebl.addressBook.constants.CardState;
 import com.wavebl.addressBook.controller.CreateBusinessCardCommand;
-import com.wavebl.addressBook.domain.exception.BusinessException;
+import com.wavebl.addressBook.exception.BusinessException;
 import com.wavebl.addressBook.domain.model.BusinessCard;
 import com.wavebl.addressBook.domain.service.*;
 import org.junit.jupiter.api.Nested;
