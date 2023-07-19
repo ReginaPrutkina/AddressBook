@@ -2,6 +2,7 @@ package com.wavebl.addressBook;
 
 import com.wavebl.addressBook.constants.CardState;
 import com.wavebl.addressBook.controller.CreateBusinessCardCommand;
+import com.wavebl.addressBook.domain.exception.BusinessException;
 import com.wavebl.addressBook.domain.model.BusinessCard;
 import com.wavebl.addressBook.domain.service.*;
 import org.junit.jupiter.api.Nested;
@@ -28,27 +29,26 @@ class AddressBookApplicationTest {
     private static final String NAME_4 = "name4";
     private static final String ADDRESS_4 = "address4";
 
-    @Autowired
-    private CreateBusinessCardService createBusinessCardService;
-
-    @Autowired
-    private GetListBusinessCardService getListBusinessCardService;
-
-    @Autowired
-    private ChangeStatusBusinessCardService changeStatusBusinessCardService;
-
-    @Autowired
-    private DeleteBusinessCardService deleteBusinessCardService;
-
-    @Autowired
-    private GetBusinessCardService getBusinessCardService;
-
     @Test
     void contextLoads() {
     }
 
     @Nested
     class ServicesTestIT {
+        @Autowired
+        private CreateBusinessCardService createBusinessCardService;
+
+        @Autowired
+        private GetListBusinessCardService getListBusinessCardService;
+
+        @Autowired
+        private ChangeStatusBusinessCardService changeStatusBusinessCardService;
+
+        @Autowired
+        private DeleteBusinessCardService deleteBusinessCardService;
+
+        @Autowired
+        private GetBusinessCardService getBusinessCardService;
 
         @Test
         void scenarioTest() {
@@ -82,7 +82,7 @@ class AddressBookApplicationTest {
             deleteBusinessCardService.delete(CARD_ID_4);
             businessCardList = getListBusinessCardService.getList();
             assertEquals(3, businessCardList.size());
-            assertThrows(RuntimeException.class, () -> getBusinessCardService.getById(CARD_ID_4));
+            assertThrows(BusinessException.class, () -> getBusinessCardService.getById(CARD_ID_4));
 
             //get with CardState.KNOWN - 1 BusinessCard
             businessCardList = getListBusinessCardService.getList(CardState.KNOWN);
@@ -99,6 +99,12 @@ class AddressBookApplicationTest {
             businessCardList = getListBusinessCardService.getList();
             assertEquals(3, businessCardList.size());
             System.out.println("All businessCards with new states:");
+            System.out.println(businessCardList);
+
+            //get with CardState.STRONG_APPROVED - 1 BusinessCard
+            businessCardList = getListBusinessCardService.getList(CardState.STRONG_APPROVED);
+            assertEquals(1, businessCardList.size());
+            System.out.println("BusinessCards with status " + CardState.STRONG_APPROVED.getValue());
             System.out.println(businessCardList);
         }
     }

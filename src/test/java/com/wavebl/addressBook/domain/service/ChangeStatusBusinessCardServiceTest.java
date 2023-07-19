@@ -1,6 +1,7 @@
 package com.wavebl.addressBook.domain.service;
 
 import com.wavebl.addressBook.constants.CardState;
+import com.wavebl.addressBook.domain.exception.BusinessException;
 import com.wavebl.addressBook.domain.model.BusinessCard;
 import com.wavebl.addressBook.domain.port.FindBusinessCardByIdPort;
 import com.wavebl.addressBook.domain.port.SaveBusinessCardPort;
@@ -66,7 +67,7 @@ class ChangeStatusBusinessCardServiceTest {
     void changeStatusFailTest() {
         when(findBusinessCardByIdPort.find(anyLong())).thenReturn(Optional.empty());
 
-        assertThrows(RuntimeException.class, () -> subj.changeStatus(CARD_ID, NEW_CARD_STATE));
+        assertThrows(BusinessException.class, () -> subj.changeStatus(CARD_ID, NEW_CARD_STATE));
         verify(findBusinessCardByIdPort).find(CARD_ID);
         verifyNoInteractions(saveBusinessCardPort);
     }

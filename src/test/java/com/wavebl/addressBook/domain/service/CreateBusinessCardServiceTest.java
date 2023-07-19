@@ -2,6 +2,7 @@ package com.wavebl.addressBook.domain.service;
 
 import com.wavebl.addressBook.constants.CardState;
 import com.wavebl.addressBook.controller.CreateBusinessCardCommand;
+import com.wavebl.addressBook.domain.exception.BusinessException;
 import com.wavebl.addressBook.domain.model.BusinessCard;
 import com.wavebl.addressBook.domain.port.FindBusinessCardByIdPort;
 import com.wavebl.addressBook.domain.port.SaveBusinessCardPort;
@@ -65,9 +66,9 @@ class CreateBusinessCardServiceTest {
 
         assertNotNull(result);
         assertEquals(result.getCardId(), CARD_ID);
-        assertEquals(result.getAddress(), ADDRESS);
-        assertEquals(result.getName(), NAME);
-        assertEquals(result.getStatus(), CardState.KNOWN);
+        assertEquals(ADDRESS, result.getAddress());
+        assertEquals(NAME, result.getName());
+        assertEquals(CardState.KNOWN, result.getStatus());
     }
 
     @Test
@@ -76,7 +77,7 @@ class CreateBusinessCardServiceTest {
 
         CreateBusinessCardCommand command = new CreateBusinessCardCommand();
         command.setCardId(CARD_ID);
-        assertThrows(RuntimeException.class, () -> subj.create(command, CardState.KNOWN));
+        assertThrows(BusinessException.class, () -> subj.create(command, CardState.KNOWN));
         verify(findBusinessCardByIdPort).find(CARD_ID);
         verifyNoInteractions(mapper);
         verifyNoInteractions(saveBusinessCardPort);

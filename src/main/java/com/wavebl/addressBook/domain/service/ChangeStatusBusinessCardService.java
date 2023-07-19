@@ -1,6 +1,7 @@
 package com.wavebl.addressBook.domain.service;
 
 import com.wavebl.addressBook.constants.CardState;
+import com.wavebl.addressBook.domain.exception.BusinessException;
 import com.wavebl.addressBook.domain.model.BusinessCard;
 import com.wavebl.addressBook.domain.port.FindBusinessCardByIdPort;
 import com.wavebl.addressBook.domain.port.SaveBusinessCardPort;
@@ -15,7 +16,7 @@ public class ChangeStatusBusinessCardService {
 
     public BusinessCard changeStatus(long cardId, CardState newStatus) throws RuntimeException {
         BusinessCard businessCard = findBusinessCardByIdPort.find(cardId)
-                .orElseThrow(() -> new RuntimeException(String.format("BusinessCard with id %d not found ", cardId)));
+                .orElseThrow(() -> new BusinessException(String.format("BusinessCard with id %d not found ", cardId)));
         businessCard.setStatus(newStatus);
         saveBusinessCardPort.save(businessCard);
         return businessCard;

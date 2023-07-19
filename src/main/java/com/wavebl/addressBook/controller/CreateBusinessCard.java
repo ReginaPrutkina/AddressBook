@@ -15,12 +15,13 @@ public class CreateBusinessCard {
 
     @PostMapping(path = "/unknown")
     public BusinessCard CreateUnKnownBusinessCard(@RequestBody CreateBusinessCardCommand command) {
-        //todo add validation on command
+        command.validate();
         return createBusinessCardUseCase.create(command, CardState.UNKNOWN);
     }
 
     @PostMapping(path = "/known")
     public BusinessCard CreateKnownBusinessCard(@RequestBody CreateBusinessCardCommand command) {
+        command.validate();
         return createBusinessCardUseCase.create(command, CardState.KNOWN);
     }
 }

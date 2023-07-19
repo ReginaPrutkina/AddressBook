@@ -1,5 +1,6 @@
 package com.wavebl.addressBook.domain.service;
 
+import com.wavebl.addressBook.domain.exception.BusinessException;
 import com.wavebl.addressBook.domain.model.BusinessCard;
 import com.wavebl.addressBook.domain.port.FindBusinessCardByIdPort;
 import lombok.RequiredArgsConstructor;
@@ -12,6 +13,6 @@ public class GetBusinessCardService {
 
     public BusinessCard getById(long cardId) throws RuntimeException {
         return findBusinessCardByIdPort.find(cardId)
-                .orElseThrow(() -> new RuntimeException(String.format("BusinessCard with %d not found ", cardId)));
+                .orElseThrow(() -> new BusinessException(String.format("BusinessCard with %d not found ", cardId)));
     }
 }

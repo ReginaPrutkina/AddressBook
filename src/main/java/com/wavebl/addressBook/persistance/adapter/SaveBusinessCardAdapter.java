@@ -1,5 +1,6 @@
 package com.wavebl.addressBook.persistance.adapter;
 
+import com.wavebl.addressBook.domain.exception.BusinessException;
 import com.wavebl.addressBook.domain.model.BusinessCard;
 import com.wavebl.addressBook.domain.port.SaveBusinessCardPort;
 import com.wavebl.addressBook.persistance.mapper.BusinessCardMapper;
@@ -18,8 +19,7 @@ public class SaveBusinessCardAdapter implements SaveBusinessCardPort {
         try {
             addressBookRepository.save(mapper.mapToEntity(businessCard));
         } catch (Exception e) {
-            // use own exception
-            throw new RuntimeException("Save error ", e);
+            throw new BusinessException("Save error ", e);
         }
         return businessCard;
     }

@@ -1,5 +1,6 @@
 package com.wavebl.addressBook.domain.service;
 
+import com.wavebl.addressBook.domain.exception.BusinessException;
 import com.wavebl.addressBook.domain.port.DeleteBusinessCardPort;
 import com.wavebl.addressBook.domain.port.FindBusinessCardByIdPort;
 import lombok.RequiredArgsConstructor;
@@ -13,7 +14,7 @@ public class DeleteBusinessCardService {
 
     public void delete(long cardId) throws RuntimeException {
         if (findBusinessCardByIdPort.find(cardId).isEmpty()) {
-                 throw new RuntimeException(String.format("BusinessCard with id %d not found ", cardId));
+                 throw new BusinessException(String.format("BusinessCard with id %d not found ", cardId));
         }
         deleteBusinessCardPort.delete(cardId);
     }

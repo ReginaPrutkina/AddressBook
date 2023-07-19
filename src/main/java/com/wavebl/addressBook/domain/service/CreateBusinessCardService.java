@@ -2,6 +2,7 @@ package com.wavebl.addressBook.domain.service;
 
 import com.wavebl.addressBook.constants.CardState;
 import com.wavebl.addressBook.controller.CreateBusinessCardCommand;
+import com.wavebl.addressBook.domain.exception.BusinessException;
 import com.wavebl.addressBook.domain.model.BusinessCard;
 import com.wavebl.addressBook.domain.port.FindBusinessCardByIdPort;
 import com.wavebl.addressBook.domain.port.SaveBusinessCardPort;
@@ -20,7 +21,7 @@ public class CreateBusinessCardService implements CreateBusinessCardUseCase {
     @Override
     public BusinessCard create(CreateBusinessCardCommand command, CardState status) throws RuntimeException {
         if (findBusinessCardByIdPort.find(command.getCardId()).isPresent()) {
-            throw new RuntimeException(String.format("BusinessCard with id %d already saved ", command.getCardId()));
+            throw new BusinessException(String.format("BusinessCard with id %d already saved ", command.getCardId()));
         }
         BusinessCard businessCard = mapper.map(command, status);
         saveBusinessCardPort.save(businessCard);
